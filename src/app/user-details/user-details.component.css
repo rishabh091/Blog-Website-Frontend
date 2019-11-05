@@ -1,0 +1,10 @@
+.btn-width{
+    width: 500px;
+}
+.bg-img{
+    z-index: -1; 
+    top: 0px;
+    height: 100%;
+    width: 100%;
+    opacity: 0.6;
+}

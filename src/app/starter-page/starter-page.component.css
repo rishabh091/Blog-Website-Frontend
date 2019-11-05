@@ -1,0 +1,16 @@
+.img-size{
+    z-index: -1;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+}
+.orange-border{
+    border-bottom: 6px solid #f88020;
+}
+.left-orange-border{
+    border-left: 6px solid #f88020; 
+}
+.rounded-xlg{
+    border-radius: 100px;
+}

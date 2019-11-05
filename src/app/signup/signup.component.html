@@ -1,0 +1,144 @@
+<div class="container-fluid position-relative">
+  <div class="container-fluid img-background position-absolute">
+    <div class="container-fluid p-5 text-light">
+      <i class="material-icons arrow-size rounded-circle" (click)="moveToHome()"
+        >keyboard_arrow_left</i
+      >
+      <h1 class="display-3">Sign up</h1>
+      <h4 class="display-5">and write your mind out</h4>
+    </div>
+  </div>
+
+  <div class="container-fluid position-absolute d-flex custom-pos">
+    <div class="container p-4 bg-custom shadow-lg border rounded">
+      <div class="d-flex flex-column p-5">
+        <!--Firstname and lastname-->
+        <div class="d-flex justify-content-between mb-4">
+          <div>
+            <div class="mb-1 small-font font-weight-bolder">
+              Firstname <i class="text-muted">( required )</i>
+            </div>
+            <div>
+              <input
+                type="text"
+                placeholder="firstname"
+                class="p-2 gray-border"
+                [(ngModel)]="firstName"
+                [ngModelOptions]="{ standalone: true }"
+              />
+            </div>
+          </div>
+
+          <div>
+            <div class="mb-1 small-font font-weight-bolder">
+              Lastname <i class="text-muted">( required )</i>
+            </div>
+            <div>
+              <input
+                type="text"
+                placeholder="lastname"
+                class="p-2 gray-border"
+                [(ngModel)]="lastName"
+                [ngModelOptions]="{ standalone: true }"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!--username-->
+        <div class="mb-4">
+          <div class="mb-1 small-font font-weight-bolder">
+            Username <i class="text-muted">( required )</i>
+          </div>
+          <input
+            type="text"
+            placeholder="username"
+            class="p-2 input-width gray-border"
+            [(ngModel)]="userName"
+            [ngModelOptions]="{ standalone: true }"
+          />
+        </div>
+
+        <!--email-->
+        <div class="mb-4">
+          <div class="mb-1 small-font font-weight-bolder">
+            Email <i class="text-muted">( required )</i>
+          </div>
+          <input
+            type="email"
+            placeholder="email"
+            class="p-2 input-width gray-border"
+            [(ngModel)]="email"
+            [ngModelOptions]="{ standalone: true }"
+          />
+        </div>
+
+        <!--mobile-->
+        <div class="mb-4">
+          <div class="mb-1 small-font font-weight-bolder">
+            Enter Mobile Number <i class="text-muted">( required )</i>
+          </div>
+          <div class="input-group input-width">
+            <div class="input-group-prepend bg-white">
+              <span class="input-group-text rounded-0 gray-border bg-white"
+                >+91</span
+              >
+            </div>
+            <input
+              type="text"
+              placeholder="mobile number"
+              name="mobile"
+              maxlength="10"
+              minlength="10"
+              [(ngModel)]="mobile"
+              [ngModelOptions]="{ standalone: true }"
+              class="p-2 gray-border"
+              style="width: 500px;"
+            />
+          </div>
+        </div>
+
+        <!--password-->
+        <div class="mb-4">
+          <div class="mb-1 small-font font-weight-bolder">
+            Password <i class="text-muted">( required )</i>
+          </div>
+          <input
+            type="password"
+            placeholder="password"
+            class="p-2 input-width gray-border"
+            [(ngModel)]="password"
+            [ngModelOptions]="{ standalone: true }"
+          />
+        </div>
+
+        <!--bio-->
+        <div class="mb-4">
+          <div class="mb-1 small-font font-weight-bolder">
+            Your bio <i class="text-muted">( optional )</i>
+          </div>
+          <textarea
+            rows="5"
+            class="p-2 input-width gray-border"
+            [(ngModel)]="bio"
+            [ngModelOptions]="{ standalone: true }"
+          ></textarea>
+        </div>
+
+        <div class="mb-2 rem-8">
+          Already a member ?
+          <a href="/login" class="font-weight-bold text-info">Log In</a>
+        </div>
+
+        <!--button-->
+        <button
+          type="button"
+          class="btn btn-info rounded-0 p-3 text-left font-weight-bolder"
+          (click)="signIn()"
+        >
+          SIGN IN
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
