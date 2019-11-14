@@ -12,6 +12,10 @@ import { HomeComponent } from './home/home.component';
 import { from } from 'rxjs';
 import { HttpClientModule } from '@angular/common/http';
 import { StarterPageComponent } from './starter-page/starter-page.component';
+import { AddBlogComponent } from './add-blog/add-blog.component';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
+import { DisplayBlogComponent } from './display-blog/display-blog.component';
+import { FollowerListComponent } from './follower-list/follower-list.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +25,11 @@ import { StarterPageComponent } from './starter-page/starter-page.component';
     UserDetailsComponent,
     NavbarComponent,
     HomeComponent,
-    StarterPageComponent
+    StarterPageComponent,
+    AddBlogComponent,
+    EditProfileComponent,
+    DisplayBlogComponent,
+    FollowerListComponent
   ],
   imports: [
     BrowserModule,

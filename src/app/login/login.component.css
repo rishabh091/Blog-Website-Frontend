@@ -34,6 +34,11 @@ input:focus {
 .rem-8 {
   font-size: 0.8rem;
 }
+.forget-pwd:hover{
+  color: #3c70a4;
+  cursor: pointer;
+  border-bottom: 1px solid #3c70a4;
+}
 
 @media screen and (max-width: 700px) {
   .form-width {

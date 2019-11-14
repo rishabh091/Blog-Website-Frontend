@@ -1,0 +1,9 @@
+.img-background {
+  background: url("../../assets/skylinePng.png");
+  background-repeat: no-repeat;
+  background-position-x: right;
+  background-attachment: fixed;
+}
+.orange-left-border{
+  border-left: 6px solid orange;
+}

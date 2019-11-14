@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Router } from '@angular/router';
 import { AppService } from '../app.service';
 import { AuthenticationService } from '../authentication.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: "app-login",
@@ -16,7 +17,7 @@ export class LoginComponent implements OnInit {
   //variable used for showing alert
   validateUser = true;
 
-  constructor(private service: AppService, private router: Router,private authService: AuthenticationService) {}
+  constructor(private service: AppService, private router: Router,private authService: AuthenticationService,private httpClient: HttpClient) {}
 
   ngOnInit() {
     if(this.service.checkLogin()){
@@ -25,10 +26,7 @@ export class LoginComponent implements OnInit {
   }
 
   login(){
-    if(this.email==undefined || this.password==undefined){
-      this.validateUser=false;
-    }
-    else{
+    if(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.email)){
       this.validateUser=true;
     }
     if(this.validateUser){
@@ -40,9 +38,10 @@ export class LoginComponent implements OnInit {
           this.router.navigate(['home']);
         },error=>{
           this.validateUser=false;
-        }
-        
-      );
+        });
+    }
+    else{
+      this.validateUser=false;
     }
   }
 
@@ -53,5 +52,21 @@ export class LoginComponent implements OnInit {
     } else {
       this.passwordType = "password";
     }
+  }
+
+  forgetPassword(){
+    let url="http://localhost:8080/login/forgetPassword";
+
+    let email={
+      "email": this.email
+    }
+    this.httpClient.post(url,email).subscribe((res:any)=>{
+      if(res){
+        alert("Mail has been sent to given email");
+      }
+      else{
+        alert("Mail Id not found");
+      }
+    });
   }
 }

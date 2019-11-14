@@ -1,0 +1,22 @@
+.bg-simple{
+    background: #eeeeee;
+}
+input{
+    background: none;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid black;
+}
+.search-des-width{
+    width: 400px;
+}
+textarea{
+    outline: none;
+}
+.edit-textarea{
+    height: 1500px;
+    width: 100%;
+}
+.bg-rgba{
+    background: rgba(0, 0, 0, 0.7);
+}

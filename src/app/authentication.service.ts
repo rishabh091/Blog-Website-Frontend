@@ -23,6 +23,15 @@ export class AuthenticationService {
   }
 
   logoutService() {
+    sessionStorage.removeItem("recent");
+    sessionStorage.removeItem("userId");
     sessionStorage.removeItem("token");
+  }
+
+  addHeader(){
+    const token = sessionStorage.getItem("token");
+    const headers = new HttpHeaders({ Authorization: " Basic " + token });
+
+    return headers;
   }
 }

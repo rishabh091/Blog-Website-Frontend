@@ -1,0 +1,10 @@
+input{
+    margin-bottom: 1rem;
+    border-radius: 100px;
+}
+.linear-grad{
+    background: linear-gradient(#940a37,#fad6d6);
+}
+.small-font{
+    font-size: 0.8rem;
+}

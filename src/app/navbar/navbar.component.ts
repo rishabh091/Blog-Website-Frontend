@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { AppService } from '../app.service';
@@ -13,6 +13,12 @@ export class NavbarComponent implements OnInit {
 
   //checks whether its homepage or not
   @Input() homepageActive;
+  //gives output of search to homepage
+  @Output() searchOutputEvent=new EventEmitter<any>();
+
+  id;
+
+  search;
   
   constructor(private router: Router,
     private route: ActivatedRoute,
@@ -21,6 +27,10 @@ export class NavbarComponent implements OnInit {
     private authService: AuthenticationService) { }
 
   ngOnInit() {
+    if(!this.service.checkLogin()){
+      this.router.navigate(["/starter-page"]);
+    }
+    this.getUserInfo();
   }
 
   logout() {
@@ -31,10 +41,8 @@ export class NavbarComponent implements OnInit {
 
       this.httpClient.get(logoutUrl).subscribe(res => {
         console.log(JSON.stringify(res));
+        location.reload();
       });
-
-      location.reload();
-      this.router.navigate(["/starterPage"]);
     }
     else{
       console.log("Login first");
@@ -43,6 +51,29 @@ export class NavbarComponent implements OnInit {
 
   checkLogin() {
     return this.service.checkLogin();
+  }
+
+  getUserInfo(){
+    console.log("getting user info..");
+    let headers=this.authService.addHeader();
+    let url="http://localhost:8080/login/getProfile";
+    this.httpClient.get(url,{headers}).subscribe((res:any)=>{
+      this.id=res.id;
+      sessionStorage.setItem("userId",this.id);
+    });
+  }
+
+  searchBlog(){
+    let url="http://localhost:8080/blog/search/"+this.search;
+    let headers=this.authService.addHeader();
+    
+    if(this.search != undefined && this.search != " "){
+      this.httpClient.get(url,{headers}).subscribe((res:any)=>{
+        console.log(res);
+        //setting results in eventemitter
+        this.searchOutputEvent.emit(res);
+      });
+    }
   }
 
 }

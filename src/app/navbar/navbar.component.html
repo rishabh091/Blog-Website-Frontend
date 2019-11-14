@@ -1,7 +1,7 @@
-<nav class="navbar navbar-expand-md bg-black sticky-top navbar-dark">
+<nav class="navbar navbar-expand-md bg-light sticky-top navbar-dark shadow">
   <!-- Brand -->
   <a class="navbar-brand bottom-border ml-3" href="#"
-    >sky<span class="text-info">line</span></a
+    ><span class="text-dark">sky</span><span class="text-info">line</span></a
   >
 
   <!-- Toggler/collapsibe Button -->
@@ -16,14 +16,16 @@
 
   <!-- Navbar links -->
   <div class="collapse navbar-collapse" id="collapsibleNavbar">
-    <div *ngIf="homepageActive" class="m-auto d-flex white-border">
+    <div *ngIf="homepageActive" class="m-auto d-flex black-border">
       <input
         type="text"
         placeholder="Search anything..."
         class="search-input"
+        [(ngModel)]="search"
+        [ngModelOptions]="{ standalone: true }"
       />
-      <button type="button" class="no-border p-2">
-        <i class="material-icons text-light">
+      <button type="button" class="no-border p-2" (click)="searchBlog()">
+        <i class="material-icons text-muted">
           search
         </i>
       </button>
@@ -33,9 +35,20 @@
       <li class="nav-item">
         <div>
           <abbr title="User Details">
-            <a class="nav-link text-light" href="/home/user-details"
-              ><i class="material-icons">
+            <a class="nav-link" href="/home/user-details/{{ id }}"
+              ><i class="material-icons text-muted">
                 account_circle
+              </i></a
+            >
+          </abbr>
+        </div>
+      </li>
+      <li class="nav-item ml-3">
+        <div>
+          <abbr title="Create Blog">
+            <a class="nav-link" href="/home/addBlog"
+              ><i class="material-icons text-muted">
+                add
               </i></a
             >
           </abbr>
