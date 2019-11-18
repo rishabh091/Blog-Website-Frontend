@@ -102,7 +102,9 @@ export class UserDetailsComponent implements OnInit {
   }
 
   deleteBlog(id) {
-    let headers = this.auth.addHeader();
+    var x=confirm("Do you really want to delete the blog ?");
+    if(x){
+      let headers = this.auth.addHeader();
     id = parseInt(id);
     console.log("Blog id : " + id);
     let url = "http://localhost:8080/blog/deleteBlog/" + id;
@@ -111,6 +113,7 @@ export class UserDetailsComponent implements OnInit {
 
       this.getUserBlogs(id);
     });
+    }
   }
 
   editBlog(id) {

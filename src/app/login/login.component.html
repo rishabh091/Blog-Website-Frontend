@@ -68,6 +68,7 @@
         class="btn btn-blue text-light text-left pt-3 pb-3 font-weight-bolder rounded-0 mb-3"
         (click)="login()"
       >
+        <span *ngIf="loading" class="spinner-grow spinner-grow-sm mr-3"></span>
         LOG IN
       </button>
 
@@ -78,9 +79,17 @@
       </div>
 
       <!--forget password-->
-      <div class="container-fluid font-weight-bolder rem-8 forget-pwd" (click)="forgetPassword()">
+      <div
+        class="container-fluid font-weight-bolder rem-8 forget-pwd"
+        (click)="forgetPassword()"
+      >
         Forget Password
       </div>
     </div>
+  </div>
+
+  <!--forget password loading-->
+  <div *ngIf="forgetLoading" class="container-fluid">
+    <div class="spinner-border text-danger position-fixed" style="left: 50%; top: 50%;"></div>
   </div>
 </div>

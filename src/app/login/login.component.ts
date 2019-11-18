@@ -17,6 +17,12 @@ export class LoginComponent implements OnInit {
   //variable used for showing alert
   validateUser = true;
 
+  //for forgetPassword 
+  forgetLoading=false;
+
+  //for loading
+  loading=false;
+
   constructor(private service: AppService, private router: Router,private authService: AuthenticationService,private httpClient: HttpClient) {}
 
   ngOnInit() {
@@ -31,6 +37,7 @@ export class LoginComponent implements OnInit {
     }
     if(this.validateUser){
       sessionStorage.setItem("email",this.email);
+      this.loading=true;
 
       this.authService.authenticate(this.email,this.password).subscribe(
         data=>{
@@ -41,6 +48,7 @@ export class LoginComponent implements OnInit {
         });
     }
     else{
+      this.loading=false;
       this.validateUser=false;
     }
   }
@@ -57,14 +65,18 @@ export class LoginComponent implements OnInit {
   forgetPassword(){
     let url="http://localhost:8080/login/forgetPassword";
 
+    this.forgetLoading=true;
+
     let email={
       "email": this.email
     }
     this.httpClient.post(url,email).subscribe((res:any)=>{
       if(res){
+        this.forgetLoading=false;
         alert("Mail has been sent to given email");
       }
       else{
+        this.forgetLoading=false;
         alert("Mail Id not found");
       }
     });

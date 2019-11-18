@@ -4,6 +4,20 @@
 ></app-navbar>
 
 <div class="container p-5 img-background">
+  <div class="container-fluid border-bottom mb-5">
+    <div class="heading-font-size font-weight-bold pl-2 orange-border mb-5">
+      Users you can follow
+    </div>
+    <div class="d-flex">
+      <div *ngFor="let i of users; let ind = index;">
+        <div  *ngIf="ind < 8" class="border p-3 bg-white mr-3 mb-3">
+          <div class="font-weight-bolder"><a href="/home/user-details/{{ i.id }}">{{ i.userName }}</a></div>
+          <div class="text-muted">{{ i.firstName }} {{ i.lastName }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="row">
     <div *ngIf="!searchElement" class="col-sm-3">
       <div class="heading-font-size font-weight-bold pl-2 orange-border">
@@ -41,7 +55,9 @@
             <div class="font-weight-bold p-2">
               <a href="/home/display-blog/{{ i.blogId }}">{{ i.title }}</a>
             </div>
-            <div class="p-2 text-muted text-right">{{ i.date | date:'mediumDate' }}</div>
+            <div class="p-2 text-muted text-right">
+              {{ i.date | date: "mediumDate" }}
+            </div>
             <div class="p-2 text-right">
               <a href="/home/user-details/{{ i.user.id }}"
                 ><i>-{{ i.user.userName }}</i></a
@@ -103,7 +119,7 @@
               </div>
 
               <div class="container text-muted text-right mt-2">
-                {{ i.date | date:'mediumDate' }}
+                {{ i.date | date: "mediumDate" }}
               </div>
 
               <div class="container text-muted text-right mt-2">

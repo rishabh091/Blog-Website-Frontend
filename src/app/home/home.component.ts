@@ -24,6 +24,8 @@ export class HomeComponent implements OnInit {
 
   recentBlog;
 
+  users=[];
+
   constructor(
     private service: AppService,
     private router: Router,
@@ -38,6 +40,16 @@ export class HomeComponent implements OnInit {
     this.getBlogs();
     this.getCategory();
     this.getFriendBlog();
+    this.getUsers();
+  }
+
+  getUsers(){
+    let url="http://localhost:8080/signup/getUsers";
+    let headers=this.authService.addHeader();
+
+    this.httpClient.get(url,{headers}).subscribe((res:any)=>{
+      this.users=res;
+    });
   }
 
   getCategory() {

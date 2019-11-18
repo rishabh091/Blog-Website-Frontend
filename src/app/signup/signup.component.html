@@ -136,6 +136,10 @@
           class="btn btn-info rounded-0 p-3 text-left font-weight-bolder"
           (click)="signIn()"
         >
+          <span
+            *ngIf="loading"
+            class="spinner-grow spinner-grow-sm mr-3"
+          ></span>
           SIGN IN
         </button>
       </div>
